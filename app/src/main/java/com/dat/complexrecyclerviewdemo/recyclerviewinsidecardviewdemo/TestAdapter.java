@@ -14,11 +14,29 @@ import java.util.List;
  * Created by DAT on 2/16/2017.
  */
 
-public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> {
+public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>
+    implements StickyHeaderAdapter<TestAdapter.HeaderHolder> {
     List<String> data;
 
     public TestAdapter(List<String> data) {
         this.data = data;
+    }
+
+    @Override
+    public long getHeaderId(int position) {
+        return 0;
+    }
+
+    @Override
+    public HeaderHolder onCreateHeaderViewHolder(ViewGroup parent) {
+        View view = LayoutInflater.from(parent.getContext())
+            .inflate(R.layout.item_test_header, parent, false);
+        return new HeaderHolder(view);
+    }
+
+    @Override
+    public void onBindHeaderViewHolder(HeaderHolder viewholder, int position) {
+
     }
 
     @Override
@@ -48,6 +66,12 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> {
         ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+        }
+    }
+
+    static class HeaderHolder extends RecyclerView.ViewHolder {
+        HeaderHolder(View itemView) {
+            super(itemView);
         }
     }
 }
