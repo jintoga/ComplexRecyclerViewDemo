@@ -26,6 +26,7 @@
                 android:layout_height="50dp"
                 android:layout_margin="6dp"
                 app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="0dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="true"
                 app:layout_anchor="@id/recyclerView"

@@ -38,7 +38,7 @@ public class TestActivity extends AppCompatActivity {
         setCardViewBackgroundToRecyclerView(recyclerView);
 
         List<String> data = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 50; i++) {
             data.add("Item " + i);
         }
         adapter = new TestAdapter(data);
@@ -51,6 +51,7 @@ public class TestActivity extends AppCompatActivity {
         cardView.setCardBackgroundColor(ContextCompat.getColor(this, R.color.white));
         cardView.setUseCompatPadding(true);
         cardView.setPreventCornerOverlap(false);
+        cardView.setRadius(0);
         int cardShadow = (int) cardView.getCardElevation();
         recyclerView.setPadding(cardView.getContentPaddingLeft() + cardShadow,
             cardView.getContentPaddingTop() + cardShadow + 3,
