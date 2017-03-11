@@ -61,7 +61,10 @@ public class StickyHeaderDecoration extends RecyclerView.ItemDecoration {
         RecyclerView.State state) {
         int position = parent.getChildAdapterPosition(view);
         int headerHeight = 0;
-
+        if (position == 0) {
+            outRect.bottom = -4;
+            return;
+        }
         if (position != RecyclerView.NO_POSITION && hasHeader(position) && showHeaderAboveItem(
             position)) {
 
@@ -163,8 +166,7 @@ public class StickyHeaderDecoration extends RecyclerView.ItemDecoration {
 
                     final int left = child.getLeft();
                     final int top = getHeaderTop(parent, child, header, adapterPos, layoutPos);
-                    canvas.translate(left, top);
-
+                    canvas.translate(left, top - 4);
                     header.setTranslationX(left);
                     header.setTranslationY(top);
                     header.draw(canvas);

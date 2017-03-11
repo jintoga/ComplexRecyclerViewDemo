@@ -11,33 +11,32 @@ import com.dat.complexrecyclerviewdemo.R;
 import java.util.List;
 
 /**
- * Created by DAT on 2/16/2017.
+ * Created by DAT on 2/20/2017.
  */
 
-public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>
-    implements StickyHeaderAdapter<TestAdapter.HeaderHolder> {
+public class Test2Adapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>  {
     List<String> data;
 
-    public TestAdapter(List<String> data) {
+    public Test2Adapter(List<String> data) {
         this.data = data;
     }
 
-    @Override
+    /*@Override
     public long getHeaderId(int position) {
-        return 0;
+        return -1;
     }
 
     @Override
-    public HeaderHolder onCreateHeaderViewHolder(ViewGroup parent) {
+    public TestAdapter.HeaderHolder onCreateHeaderViewHolder(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext())
             .inflate(R.layout.item_test_header, parent, false);
-        return new HeaderHolder(view);
+        return new TestAdapter.HeaderHolder(view);
     }
 
     @Override
-    public void onBindHeaderViewHolder(HeaderHolder viewholder, int position) {
+    public void onBindHeaderViewHolder(TestAdapter.HeaderHolder viewholder, int position) {
 
-    }
+    }*/
 
     public void addItem(String item) {
         data.add(item);
@@ -45,18 +44,20 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TestAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view =
-            LayoutInflater.from(parent.getContext()).inflate(R.layout.item_test, parent, false);
-        return new ViewHolder(view);
+            LayoutInflater.from(parent.getContext()).inflate(R.layout.item_test2, parent, false);
+        return new TestAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(TestAdapter.ViewHolder holder, int position) {
         if (data.get(position) != null) {
             holder.text.setText(data.get(position));
         }
     }
+
+
 
     @Override
     public int getItemCount() {

@@ -11,3 +11,4 @@
 gradlew.bat
 gradlew
 gradle/wrapper/gradle-wrapper.jar
+parallaxrecyclerview/proguard-rules.pro
