@@ -6,9 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager;
+import com.beloo.widget.chipslayoutmanager.SpacingItemDecoration;
 import com.dat.complexrecyclerviewdemo.R;
 import com.squareup.picasso.Picasso;
 import com.yayandroid.parallaxrecyclerview.ParallaxViewHolder;
+import java.util.List;
 
 /**
  * Created by yahyabayramoglu on 14/04/15.
@@ -43,7 +48,9 @@ public class TestRecyclerAdapter extends RecyclerView.Adapter<TestRecyclerAdapte
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         // viewHolder.getBackgroundImage().setImageResource(imageIds[position % imageIds.length]);
-        Picasso.with(context).load(imageIds[position]).into(viewHolder.getBackgroundImage());
+        Picasso.with(context)
+            .load(imageIds[position % imageIds.length])
+            .into(viewHolder.getBackgroundImage());
         viewHolder.getTextView().setText("Row " + position);
 
         // # CAUTION:
@@ -53,7 +60,7 @@ public class TestRecyclerAdapter extends RecyclerView.Adapter<TestRecyclerAdapte
 
     @Override
     public int getItemCount() {
-        return 4;
+        return 14;
     }
 
     /**
@@ -62,12 +69,41 @@ public class TestRecyclerAdapter extends RecyclerView.Adapter<TestRecyclerAdapte
      */
     public static class ViewHolder extends ParallaxViewHolder {
 
-        private final TextView textView;
+        @Bind(R.id.label)
+        TextView textView;
+        @Bind(R.id.chips)
+        RecyclerView chips;
+        private IItemsFactory itemsFactory = new ChipsFactory();
+        private RecyclerView.Adapter adapter;
 
         public ViewHolder(View v) {
             super(v);
+            ButterKnife.bind(this, v);
+            initChipsRV();
+        }
 
-            textView = (TextView) v.findViewById(R.id.label);
+        private void initChipsRV() {
+            ChipsLayoutManager layoutManager = ChipsLayoutManager.newBuilder(itemView.getContext())
+                .setOrientation(ChipsLayoutManager.VERTICAL)
+                .setScrollingEnabled(true)
+                .setMaxViewsInRow(3)
+                .build();
+            chips.setLayoutManager(layoutManager);
+            chips.setNestedScrollingEnabled(false);
+            chips.setAdapter(createAdapter());
+            chips.addItemDecoration(new SpacingItemDecoration(
+                itemView.getContext().getResources().getDimensionPixelOffset(R.dimen.item_space),
+                itemView.getContext().getResources().getDimensionPixelOffset(R.dimen.item_space)));
+        }
+
+        @SuppressWarnings("unchecked")
+        private RecyclerView.Adapter createAdapter() {
+
+            //        List<String> items = itemsFactory.getDoubleItems();
+            List<String> items = itemsFactory.getALotOfItems();
+
+            adapter = itemsFactory.createAdapter(items);
+            return adapter;
         }
 
         @Override

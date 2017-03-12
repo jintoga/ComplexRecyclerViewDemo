@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:background="@drawable/rounded"
+    tools:layout_marginLeft="16dp"
+    tools:layout_marginTop="16dp">
+
+    <RelativeLayout
+        android:id="@+id/container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivPhoto"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            tools:src="@drawable/shape_oval"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/ivPhoto"
+            android:layout_toRightOf="@+id/ivPhoto"
+            android:tag="text"
+            android:textColor="@android:color/black"
+            android:textSize="13sp"
+            tools:text="Trevor Hansen" />
+
+        <TextView
+            android:id="@+id/tvPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="14dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@id/tvName"
+            android:layout_toRightOf="@id/tvName"
+            android:textColor="@android:color/holo_red_dark"
+            tools:text="100" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/container"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:maxWidth="110dp"
+        android:visibility="visible"
+        tools:text="Trevor Hansen is our best friend" />
+
+</RelativeLayout>
