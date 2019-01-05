@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    buildToolsVersion '28.0.2'
     defaultConfig {
         applicationId "com.dat.complexrecyclerviewdemo"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -27,7 +27,7 @@ dependencies {
     compile('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.10.3@aar') {
         transitive = true
     }
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
+    compile 'com.jakewharton:butterknife:8.7.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
     compile 'com.android.support:design:25.1.0'
 }

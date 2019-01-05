@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+
 import com.dat.complexrecyclerviewdemo.R;
+
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by DAT on 2/16/2017.
@@ -42,7 +45,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view =
-            LayoutInflater.from(parent.getContext()).inflate(R.layout.item_test, parent, false);
+                LayoutInflater.from(parent.getContext()).inflate(R.layout.item_test, parent, false);
         return new ViewHolder(view);
     }
 
@@ -60,7 +63,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>
 
     static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.text)
+        @BindView(R.id.text)
         TextView text;
 
         ViewHolder(View itemView) {

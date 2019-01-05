@@ -9,16 +9,19 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+
 import com.dat.complexrecyclerviewdemo.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class TestActivity extends AppCompatActivity {
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     protected Toolbar toolbar;
-    @Bind(R.id.recyclerView)
+    @BindView(R.id.recyclerView)
     protected RecyclerView recyclerView;
     private TestAdapter adapter;
 
@@ -34,11 +37,11 @@ public class TestActivity extends AppCompatActivity {
     private void init() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(
-            new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+                new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         setCardViewBackgroundToRecyclerView(recyclerView);
 
         List<String> data = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 30; i++) {
             data.add("Item " + i);
         }
         adapter = new TestAdapter(data);
@@ -53,9 +56,9 @@ public class TestActivity extends AppCompatActivity {
         cardView.setPreventCornerOverlap(false);
         int cardShadow = (int) cardView.getCardElevation();
         recyclerView.setPadding(cardView.getContentPaddingLeft() + cardShadow,
-            cardView.getContentPaddingTop() + cardShadow + 3,
-            cardView.getContentPaddingRight() + cardShadow,
-            cardView.getContentPaddingBottom() + cardShadow + 3);
+                cardView.getContentPaddingTop() + cardShadow + 3,
+                cardView.getContentPaddingRight() + cardShadow,
+                cardView.getContentPaddingBottom() + cardShadow + 3);
         ViewCompat.setElevation(recyclerView, cardView.getCardElevation());
         recyclerView.setBackground(cardView.getBackground());
     }
